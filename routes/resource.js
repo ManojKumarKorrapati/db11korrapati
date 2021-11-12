@@ -24,8 +24,6 @@ router.put("/resource/tea/:id", tea_controller.tea_update_put);
 router.get("/resource/tea/:id", tea_controller.tea_detail);
 
 // GET request for list of all tea items.
-router.get("/resource/tea", tea_controller.tea_list);
-
-
+router.get("/resource/tea", tea_controller.tea_list); 
 
 module.exports = router;
