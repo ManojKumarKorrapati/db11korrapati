@@ -14,6 +14,8 @@ router.get('/create', tea_controlers.tea_create_Page);
 /* GET update costume page */ 
 router.get('/update', tea_controlers.tea_update_Page);
 
+router.get('/updatee', tea_controlers.tea_update_Pagee);
+
 /* GET delete costume page */ 
 router.get('/delete', tea_controlers.tea_delete_Page);
 
