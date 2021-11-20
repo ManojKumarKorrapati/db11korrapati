@@ -1,7 +1,6 @@
-extends layout
-
+extends layout 
+ 
 block content
-  h1= title
   meta(charset="utf-8")
   meta(name="viewport", content="width=device-width, initial-scale=1")
   link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css", rel="stylesheet",
@@ -11,13 +10,16 @@ block content
         crossorigin="anonymous")
   script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js",
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF",
-        crossorigin="anonymous")
-  if (!user) 
-    a(href="/login") Login 
+        crossorigin="anonymous") 
+  .container 
+    h1= title 
+    h2= message 
     br 
-    a(href="/register") Register 
-  if (user) 
-    p You are currently logged in as #{user.username} 
-    a(href="/tea") Take me to Tea 
-    br 
-    a(href="/logout") Logout
+    form(role='form', action="/login", method="post", style='max-width: 300px;') 
+      .form-group 
+          input.form-control(type='text', name="username", placeholder='Enter Username') 
+      .form-group 
+        input.form-control(type='password', name="password", placeholder='Password') 
+      button.btn.btn-primary(type='submit') Submit 
+      a(href='/') 
+        button.btn.btn-primary(type="button") Cancel 

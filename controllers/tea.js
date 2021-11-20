@@ -34,8 +34,16 @@ exports.tea_create_post = async function (req, res) {
   document.price = req.body.price;
   console.log(req.body);
   try {
-    let result = await document.save();
-    res.send(result);
+    if(document.price < 2 || document.price>999){
+      throw new TypeError("Please add price in between 2 and 999")
+    }
+    else if(document.tea_brand.length<=0){
+      throw new TypeError("Brand name is Empty")
+    }
+    else{
+      let result = await document.save();
+      res.send(result);
+    }
   } catch (err) {
     res.status(500);
     res.send(`{"error": ${err}}`);

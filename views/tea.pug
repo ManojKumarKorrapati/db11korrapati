@@ -13,12 +13,19 @@ block content
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF",
         crossorigin="anonymous")
   - let items = results; 
-  div(class="container-fluid") 
-    div(class="row m-1") 
+  div(class="container-fluid")
+    div(class="row m-1")
+      - let destination3 = `dispatch(\"/tea/create\")`
+      button.btn( class="btn btn-primary btn-sm", onclick= destination3) Create New Item
       each item in items 
-        - let destination = `dispatch(\"/tea/update?id=${item._id}\")`  
+        - let destination = `dispatch(\"/tea/update?id=${item._id}\")`
+        - let destination1 = `dispatch(\"/tea/detail?id=${item._id}\")`
+        - let destination2 = `dispatch(\"/tea/delete?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") Tea #{item.tea_brand}(#{item.size}) is #{item.price}
-          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+          button.btn( class="btn btn-warning m-1", onclick= destination) Update
+          button.btn( class="btn btn-success m-2", onclick= destination1) Details
+          button.btn( class="btn btn-danger m-2", onclick= destination2) Delete
+
   script. 
     function dispatch(path){ 
       window.location.href=path 
